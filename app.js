@@ -26,7 +26,7 @@ const app = express();
 
 //console.log(config.mongodb_connection_url)
 mongoose
-  .connect(config.mongodb_connection_url)
+  .connect(config.mongodb_connection_url, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("Database connection established"))
   .catch((e) => console.log("Mongo connection error: ", e.message));
 
