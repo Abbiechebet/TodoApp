@@ -25,8 +25,11 @@ const app = express();
 //   .catch((e) => console.log(e.message));
 
 //console.log(config.mongodb_connection_url)
+
+const uri = 'mongodb+srv://Abigael:abbie97@cluster0.av2cgv3.mongodb.net/TodoApp?retryWrites=true&w=majority';
 mongoose
-  .connect(config.mongodb_connection_url, { useNewUrlParser: true, useUnifiedTopology: true })
+//config.mongodb_connection_url
+  .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("Database connection established"))
   .catch((e) => console.log("Mongo connection error: ", e.message));
 
