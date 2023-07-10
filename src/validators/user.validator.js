@@ -22,12 +22,3 @@ export const loginUserValidator = Joi.object({
   email:Joi.string().optional(),
   password: Joi.string().required()
 }).strict()
-
-
-export const userForgotPasswordValidator = Joi.object({
-  email:Joi.string().required(),
-}).strict()
-
-export const userResetPasswordValidator = Joi.object({
-  password:Joi.string().required(),
-}).strict()

@@ -1,16 +1,9 @@
 import User from "../model/user.model.js";
-import { tokenVerificationModel } from "../model/tokenVerificationModel.js";
-import {
-  generateEmail,
-  generateOTP,
-  mailTransport,
-  responseEmail,
-} from "../utils/sendEmail.js";
+//import { tokenVerificationModel } from "../model/tokenVerificationModel.js";
+
 import {
   createUserValidator,
   loginUserValidator,
-  userForgotPasswordValidator,
-  userResetPasswordValidator,
 } from "../validators/user.validator.js";
 import { mongoIdValidator } from "../validators/mongoId.validator.js";
 import { BadUserRequestError, NotFoundError } from "../error/error.js";

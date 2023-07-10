@@ -9,9 +9,6 @@ const router = new express.Router()
 router.post("/create", tryCatchHandler( UserController.createUser) )
 router.get("/", tryCatchHandler( UserController.findUser) )
 router.post("/login", tryCatchHandler( UserController.loginUser) )
-router.post("/forgot-password", tryCatchHandler( UserController.userForgotPassword) )
-router.post("/reset-password/:userId/:token", tryCatchHandler( UserController.userResetPassword) )
-
 
 //Exporting the User Router
 export { router }
