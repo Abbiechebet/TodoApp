@@ -1,5 +1,8 @@
 import jwt, { verify } from "jsonwebtoken"
+import pkg from "jsonwebtoken"
 import {config} from "../config/index.js"
+
+const { verify } = pkg;
 
 export function generateToken(user){
   const payload = {

@@ -102,65 +102,6 @@ export default class UserController {
       },
     });
   }
-
-  static async userForgotPassword(req, res) {
-    const { error } = userForgotPasswordValidator.validate(req.body);
-    if (error) throw error;
-
-    const { email } = req.body;
-
-    const user = await User.findOne({ email: req.body.email });
-
-    if (!user) throw new BadUserRequestError("user not registered");
-
-    const token = generateToken(user);
-
-    const link = `http://localhost:3001/reset-password/${user._id}/${token}`;
-
-    //await 
-    mailTransport(user.email, "Password reset:", link);
-
-    res.status(200).json({
-      message: "Password reset link has been sent to your email account",
-      link,
-      token,
-    });
-
-    if (error) throw new BadUserRequestError("link not sent o your email");
-  }
-
-  static async userResetPassword(req, res) {
-    const { error } = userResetPasswordValidator.validate(req.body);
-    if (error) throw error;
-
-    const user = await User.findById(req.params.userId);
-
-    if (!user) return res.status(400).send("The id is invalid");
-
-    const Token = tokenVerificationModel();
-
-    const token = await Token.findOneAndUpdate({
-      userId: user._id,
-      token: req.params.token,
-    });
-
-    if (!token) throw new BadUserRequestError("Invalid link or token expired");
-    res.render("reset password", { email: user.email });
-    user.password = req.body.password;
-    await user.save();
-    await token.delete();
-
-    res.status(200).json({
-      message: "Password reset sucessfully.",
-      status: "Success",
-    });
-
-    if (error)
-      throw new BadUserRequestError(
-        "An error occured while resetting password"
-      );
-  }
-  //res.render('reset password', {email: user.email})
 }
 
 
