@@ -1,4 +1,4 @@
-import jwt, { verify } from "jsonwebtoken"
+import jwt from "jsonwebtoken"
 import pkg from "jsonwebtoken"
 import {config} from "../config/index.js"
 
