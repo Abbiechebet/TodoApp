@@ -18,20 +18,17 @@ const app = express();
 // Exposing environment variables
 //dotenv.config();
 
-// Database connection
-// mongoose
-//   .connect(process.env.MONGODB_CONNECTION_URL)
-//   .then(() => console.log("Database connection established"))
-//   .catch((e) => console.log(e.message));
-
-//console.log(config.mongodb_connection_url)
-
-const uri = 'mongodb+srv://Abigael:abbie97@cluster0.av2cgv3.mongodb.net/TodoApp?retryWrites=true&w=majority';
+//Database connection
 mongoose
-//config.mongodb_connection_url
-  .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(process.env.MONGODB_CONNECTION_URL)
   .then(() => console.log("Database connection established"))
-  .catch((e) => console.log("Mongo connection error: ", e.message));
+  .catch((e) => console.log(e.message));
+
+console.log(config.mongodb_connection_url)
+// mongoose
+//   .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+//   .then(() => console.log("Database connection established"))
+//   .catch((e) => console.log("Mongo connection error: ", e.message));
 
 // Port configuration
 //const port = Number(process.env.PORT) || 3000;
