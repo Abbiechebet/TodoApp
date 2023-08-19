@@ -1,5 +1,5 @@
 import express from "express";
-//import dotenv from "dotenv";
+import dotenv from "dotenv";
 import mongoose from "mongoose";
 import morgan from "morgan";
 import { globalErrorHandler } from "./src/utils/errorHandler.js";
@@ -16,15 +16,15 @@ import { router as taskRouter } from "./src/router/task.route.js";
 const app = express();
 
 // Exposing environment variables
-//dotenv.config();
+dotenv.config();
 
 //Database connection
 mongoose
-  .connect(process.env.MONGODB_CONNECTION_URL)
+  .connect(config.mongodb_connection_url)
   .then(() => console.log("Database connection established"))
   .catch((e) => console.log(e.message));
 
-console.log(config.mongodb_connection_url)
+//console.log(config.mongodb_connection_url)
 // mongoose
 //   .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
 //   .then(() => console.log("Database connection established"))
