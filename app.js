@@ -39,6 +39,14 @@ app.use(morgan("tiny"));
 app.use(express.json());
 
 
+// test route
+app.get('/testRoute', (req, res) => {
+  res.status(200).json({
+    message: "connected to the api successfully"
+  })
+})
+
+
 // Routes
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/task", taskRouter);
