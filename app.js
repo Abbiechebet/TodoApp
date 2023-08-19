@@ -20,11 +20,11 @@ dotenv.config();
 
 //Database connection
 mongoose
-  .connect(config.mongodb_connection_url)
+  .connect(config.mongodb_connection_url, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("Database connection established"))
   .catch((e) => console.log(e.message));
 
-//console.log(config.mongodb_connection_url)
+  console.log('Connecting to:', config.mongodb_connection_url);
 // mongoose
 //   .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
 //   .then(() => console.log("Database connection established"))
